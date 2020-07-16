@@ -1,0 +1,21 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+  </head>
+  <body>
+    <div id="data-box">안녕</div>
+    <button onclick="getPosts()">클릭하세요</button>
+    <script>
+      async function getPosts() {
+        let resp = await fetch("http://localhost:8080/post");
+        let posts = await resp.json();
+        let dataBox = document.querySelector("#data-box");
+        dataBox.innerHTML = JSON.stringify(posts); //자바스크립트 오브젝트를 제이슨으로 . 반대는 JSON.parse()
+        console.log(posts);
+      }
+    </script>
+  </body>
+</html>
